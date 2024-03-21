@@ -1,0 +1,27 @@
+name: Update Metadata
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  update-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Update metadata.yaml
+        run: |
+          SHA=$(git rev-parse HEAD)
+          MESSAGE=$(git log -1 --pretty=%B)
+          echo -e "versions:\n  - sha: $SHA\n    changeNotes: \"$MESSAGE\"" > metadata.yaml
+
+      - name: Commit and push if changed
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add metadata.yaml
+          git commit -m "Update metadata.yaml" || exit 0  # Exit 0 if no changes
+          git push
