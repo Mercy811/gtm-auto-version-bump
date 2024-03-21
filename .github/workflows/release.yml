@@ -12,6 +12,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+        # Qutoes in message are not allowed
       - name: Update metadata.yaml
         run: |
           SHA=$(git rev-parse HEAD)
@@ -25,6 +26,4 @@ jobs:
           git config --local user.name "GitHub Action"
           git add metadata.yaml
           git commit -m "Update metadata.yaml" || exit 0  # Exit 0 if no changes
-          git push --set-upstream origin HEAD:main --force
-        env:
-          GIT_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          git push
