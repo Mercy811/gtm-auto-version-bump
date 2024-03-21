@@ -29,3 +29,4 @@ jobs:
           git add metadata.yaml
           git commit -m "Update metadata.yaml" || exit 0  # Exit 0 if no changes
           git push
+          
