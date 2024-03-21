@@ -1,6 +1,8 @@
 homepage: "https://www.amplitude.com/"
 documentation: "https://www.docs.developers.amplitude.com/data/sdks/marketing-analytics-browser/"
 versions:
+  - sha: 8807456501ba467a2a8fac7795f5038414b503e6
+    changeNotes: test commit
   - sha: c56e7439244315158039f884f600f040cd426b88
     changeNotes: Update release.yml
   - sha: 981d857d3290bfb468225924206f7c60b3964b8b
